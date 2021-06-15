@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <style>
+      * {
+        margin: 0;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+         background-color: black;
+      }
+      #main {
+        text-align: center;
+        margin-top: 200px;
+      }
+      .h1{
+        color: rgb(255, 255, 255);
+        margin-bottom: 30px;
+        font-size: xx-large;
+      }
+      input[type="text"] {
+        margin-top: 10px;
+        width: 20%;
+        padding: 15px;
+        border: 2px solid white;
+        background-color: bisque;
+        font-size:xx-large;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-bottom: 5px;
+        margin-top: 20px;
+      }
+      input[type="submit"] {
+        margin-top: 10px;
+        width: 5%;
+        padding: 10px;
+        border: 2px solid white;
+        background: rgb(56, 177, 76);
+        color: white;
+        font-size: large;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+      #data {
+        margin-top: 50px;
+        color: white;
+      }
+      #reg {
+        margin-top: 10px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: xx-large;
+        color: white;
+      }
+      #day {
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: xx-large;
+        color: white;
+      }
+      #temp {
+        margin-top: 10px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: xx-large;
+        color: white;
+      }
+      #weather {
+        margin-top: 10px;
+        font-family: cursive;
+        font-size: xx-large;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1 class="h1">Find the Weather</h1>
+      <form method="GET">
+        <label for="city"></label>
+        <input
+          type="text"
+          name="city"
+          id="city"
+          value="{{ request.GET.city}} "
+          placeholder="city..."
+        />
+        <br />
+        <input id="sub" type="submit" value="submit" />
+      </form>
+      <div id="data">
+        {% if result %}
+        <br />
+        <h3 id="reg">{{ result.region }}</h3>
+        <h3 id="day">{{ result.dayhour }}</h3>
+        <h3 id="temp">{{ result.temp_now }}</h3>
+        <h3 id="weather">{{ result.weather_now }}</h3>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
